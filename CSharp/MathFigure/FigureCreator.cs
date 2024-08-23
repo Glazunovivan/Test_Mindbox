@@ -6,13 +6,13 @@
         {
             T result = (T)Activator.CreateInstance(typeof(T), true);
 
-            if (result.ValidateBeforeCreate(values) == false)
+            if (result.ValidateBeforeInitialize(values) == false)
             {
                 return new IncorrectFigure();
             }
 
             result.Initialize(values);
-            var incorrectAfterCrate = result.ValidateCreatingFigure();
+            var incorrectAfterCrate = result.ValidateAfterInitialize();
             if (incorrectAfterCrate is IncorrectFigure)
             {
                 return incorrectAfterCrate;

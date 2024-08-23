@@ -19,7 +19,7 @@
             _c = values[2];
         }
 
-        internal protected override Figure ValidateCreatingFigure()
+        internal protected override Figure ValidateAfterInitialize()
         {
             if (_a >= (_b + _c) || _b >= (_a + _c) || _c >= (_a + _b))
             {
