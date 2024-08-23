@@ -25,6 +25,13 @@ namespace TestMathFigure
         }
 
         [Fact]
+        public void Triangle000_IncorrectFigure()
+        {
+            var triangle = FigureCreator.Create<Triangle>(0, 0, 0);
+            Assert.Equal(0, triangle.Area);
+        }
+
+        [Fact]
         public void Area_Triangle345_Equal_6()
         {
             var triangle = FigureCreator.Create<Triangle>(3, 4, 5);
@@ -63,6 +70,19 @@ namespace TestMathFigure
         public void TriangleWithoutParametrs_IsIncorrectFigure()
         {
             Assert.IsType(typeof(IncorrectFigure), FigureCreator.Create<Triangle>());
+        }
+
+        [Fact]
+        public void Triangle301_IsIncorrectFigure()
+        {
+            Assert.IsType(typeof(IncorrectFigure), FigureCreator.Create<Triangle>(3, 0, 1));
+        }
+
+        [Fact]
+        public void Triangle0_Area_0()
+        {
+            var figure = FigureCreator.Create<Triangle>(0);
+            Assert.Equal(0, figure.Area);
         }
 
         [Fact]

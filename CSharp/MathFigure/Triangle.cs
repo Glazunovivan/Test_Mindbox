@@ -39,7 +39,7 @@
         
         internal protected override Figure ValidateAfterInitialize()
         {
-            if (_a >= (_b + _c) || _b >= (_a + _c) || _c >= (_a + _b))
+            if ((_a != 0 || _b != 0 || _c != 0) && (_a >= (_b + _c) || _b >= (_a + _c) || _c >= (_a + _b)))
             {
                 return new IncorrectFigure();
             }

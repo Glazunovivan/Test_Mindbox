@@ -13,6 +13,12 @@ namespace TestsMathFigure2
         }
 
         [Fact]
+        public void Triangle301_IncorrectFigure()
+        {
+            Assert.IsType(typeof(IncorrectFigure), new TriangleFactory().Create(3, 0, 1));
+        }
+
+        [Fact]
         public void NegativeAllParametr_IncorrectFigure()
         {
             Assert.IsType(typeof(IncorrectFigure), new TriangleFactory().Create(-1.5, -11, -5));
@@ -32,6 +38,28 @@ namespace TestsMathFigure2
         }
 
         [Fact]
+        public void Area_Triangle000_Equal_0()
+        {
+            var triangle = new TriangleFactory().Create(0, 0, 0);
+            Assert.Equal(0,triangle.Area);
+        }
+
+        [Fact]
+        public void Triangle031_IsIncorrectFigure()
+        {
+            var triangle = new TriangleFactory().Create(0, 3, 1);
+            Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+        [Fact]
+        public void Triangle340_IsIncorrectFigure()
+        {
+            var triangle = new TriangleFactory().Create(3, 4, 0);
+            Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+
+        [Fact]
         public void Area_Triangle345_Equal_6()
         {
             var triangle = new TriangleFactory().Create(3, 4, 5);
@@ -44,6 +72,13 @@ namespace TestsMathFigure2
         {
             var triangle = new TriangleFactory().Create(5, 5, 5);
             Assert.Equal(10.83, Math.Round(triangle.Area,2));
+        }
+
+        [Fact]
+        public void Area_Triangle0_Equal_0()
+        {
+            var triangle = new TriangleFactory().Create(0);
+            Assert.Equal(0, Math.Round(triangle.Area, 2));
         }
 
         [Fact]
