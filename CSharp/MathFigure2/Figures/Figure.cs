@@ -24,7 +24,7 @@
         /// <returns></returns>
         protected virtual bool ValidateBeforeInitialize(params double[] values)
         {
-            if (!values.Any() || values.Any(x => x < 0))
+            if (values is null || !values.Any() || values.Any(x => x < 0))
             {
                 return false;
             }

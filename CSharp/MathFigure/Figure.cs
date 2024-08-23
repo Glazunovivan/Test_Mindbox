@@ -17,9 +17,9 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="values"></param>
         /// <returns></returns>
-        internal protected bool ValidateBeforeInitialize(params double[] values)
+        internal protected virtual bool ValidateBeforeInitialize(params double[] values)
         {
-            if (!values.Any() || values.Any(x => x < 0))
+            if (values is null || !values.Any() || values.Any(x => x < 0))
             {
                 return false;
             }

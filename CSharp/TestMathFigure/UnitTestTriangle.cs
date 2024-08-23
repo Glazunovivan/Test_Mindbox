@@ -64,5 +64,28 @@ namespace TestMathFigure
         {
             Assert.IsType(typeof(IncorrectFigure), FigureCreator.Create<Triangle>());
         }
+
+        [Fact]
+        public void TriangleWithNullParametrs_IsIncorrectFigure()
+        {
+            var triangle = FigureCreator.Create<Triangle>(null);
+            Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+        [Fact]
+        public void TriangleWith2Parametrs_IsIncorrectFigure()
+        {
+            var triangle = FigureCreator.Create<Triangle>(1,2);
+            Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+        [Fact]
+        public void TriangleWithOnlyParametr_ABC()
+        {
+            var triangle = FigureCreator.Create<Triangle>(1) as Triangle;
+            Assert.Equal(1, triangle.A);
+            Assert.Equal(1, triangle.B);
+            Assert.Equal(1, triangle.C);
+        }
     }
 }

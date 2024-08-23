@@ -20,11 +20,12 @@
 
         protected override bool ValidateBeforeInitialize(params double[] values)
         {
-            if (values.Length < 3)
+            var result = base.ValidateBeforeInitialize(values);
+            if (result == true && values.Length == 2)
             {
                 return false;
             }
-            return true;
+            return result;
         }
 
         protected override Figure ValidateAfterInitialize()
@@ -38,9 +39,16 @@
 
         protected override void Initialize(params double[] values)
         {
-            _a = values[0];
-            _b = values[1];
-            _c = values[2];
+            if (values.Length == 1)
+            {
+                _a = _b = _c = values[0];
+            }
+            else
+            {
+                _a = values[0];
+                _b = values[1];
+                _c = values[2];
+            }
         }
 
         public bool IsRight()

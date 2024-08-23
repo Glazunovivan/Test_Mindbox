@@ -60,6 +60,7 @@ namespace TestsMathFigure2
             Assert.True(triangle.IsRight());
         }
 
+        [Fact]
         public void IsRight_Triangle453_True()
         {
             var triangle = new TriangleFactory().Create(4, 5, 3) as Triangle;
@@ -75,10 +76,33 @@ namespace TestsMathFigure2
         }
 
         [Fact]
-        public void TriangleWithoutParametrs_Exception()
+        public void TriangleWithoutParametrs_IsIncorrectFigure()
         {
             var triangle = new TriangleFactory().Create();
             Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+        [Fact]
+        public void TriangleWithNullParametrs_IsIncorrectFigure()
+        {
+            var triangle = new TriangleFactory().Create(null);
+            Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+        [Fact]
+        public void TriangleWith2Parametrs_IsIncorrectFigure()
+        {
+            var triangle = new TriangleFactory().Create(1,2);
+            Assert.IsType(typeof(IncorrectFigure), triangle);
+        }
+
+        [Fact]
+        public void TriangleWithOnlyParametr_ABC()
+        {
+            var triangle = new TriangleFactory().Create(1) as Triangle;
+            Assert.Equal(1,triangle.A);
+            Assert.Equal(1,triangle.B);
+            Assert.Equal(1,triangle.C);
         }
     }
 }
